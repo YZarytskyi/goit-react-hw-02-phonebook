@@ -6,6 +6,10 @@ const Ul = styled.ul`
   padding-left: 3rem;
 `;
 
+const Warning = styled.p`
+  padding-left: 3rem;
+`;
+
 interface ContactsListProps {
   contacts: Array<Contact>;
   filter: string;
@@ -22,6 +26,12 @@ const ContactsList: React.FC<ContactsListProps> = ({
     const normalizeFilter = filter.trim().toLowerCase();
     return normalizeName.includes(normalizeFilter);
   });
+
+  if (!filteredList.length) {
+    return (
+      <Warning>Contacts not found</Warning>
+    )
+  }
 
   return (
     <Ul>
