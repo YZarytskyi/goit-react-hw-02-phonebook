@@ -38,6 +38,7 @@ export default class ContactsForm extends Component<
 
     if (existingNames.includes(this.state.name)) {
       alert(`${this.state.name} is already in contacts.`);
+      return
     }
 
     const newContact: Contact = {
@@ -64,7 +65,7 @@ export default class ContactsForm extends Component<
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             value={this.state.name}
-            onChange={e => this.onChangeInput(e)}
+            onChange={this.onChangeInput}
           />
         </Label>
         <Label>
@@ -76,7 +77,7 @@ export default class ContactsForm extends Component<
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             value={this.state.number}
-            onChange={e => this.onChangeInput(e)}
+            onChange={this.onChangeInput}
           />
         </Label>
         <Button type="submit">Add contact</Button>
